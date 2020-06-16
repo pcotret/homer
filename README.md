@@ -47,9 +47,10 @@ At this moment, there are 8 instructions. The opcode could be encoded on 3 bits 
 | 1110   | -           |
 | 1111   | -           |
 
-## Code list
+# 16/06/2020
 
-- [x] Register file
-- [x] Instruction decoder
-- [x] Instruction memory
-- [x] ALU **(even though all instructions are not supported, only boolean operations at the moment)**
+Instructions can be decoded one by one. Only booleans instructions are supported for the moment.
+
+![schematic](./img/status_16-06.png)
+
+![testbench](./img/testbench_16-06.png)
