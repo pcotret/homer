@@ -59,7 +59,8 @@ Instructions can be decoded one by one. Only booleans instructions are supported
 
 ## 18/06/2020
 
-Add instruction works.
+More instructions :
 
-![add](./img/testbench_add.png)
+- `ADD`.
+- `LOAD`.
 
