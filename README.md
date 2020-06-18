@@ -46,6 +46,6 @@ Only booleans instructions are supported for the moment.
 
 ## 18/06/2020
 
-HOMER base seems to be OK, all instructions are decoded in the ALU :smiley:
+HOMER base seems to be OK, all instructions are executed in the ALU :smiley:
 
 ![base](./img/homer_base.png)
