@@ -42,19 +42,10 @@ Here is the basic instruction format :
 
 # 16/06/2020
 
-Instructions can be decoded one by one. Only booleans instructions are supported for the moment.
-
-![schematic](./img/status_16-06.png)
-
-![testbench](./img/testbench_16-06.png)
+Only booleans instructions are supported for the moment.
 
 ## 18/06/2020
 
-More instructions :
+HOMER base seems to be OK, all instructions are decoded in the ALU :smiley:
 
-- `ADD`
-- `LOAD`
-- `COMPARE`
-- `SHIFT_LEFT`
-- `SHIFT_RIGHT`
-- 
+![base](./img/homer_base.png)
