@@ -50,6 +50,8 @@ HOMER base seems to be OK, all instructions are executed in the ALU :smiley:
 
 ## 19/06/2020
 
-Adding an FSM:
+- Adding an FSM.
+- hecking the program counter behavior.
 
-![base](./img/homer_base_fsm.png)
+
+
