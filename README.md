@@ -38,9 +38,7 @@ Here is the basic instruction format :
 | 1110   | -               |                           |
 | 1111   | -               |                           |
 
-
-
-# 16/06/2020
+## 16/06/2020
 
 Only booleans instructions are supported for the moment.
 
