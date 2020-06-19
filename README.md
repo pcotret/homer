@@ -48,6 +48,10 @@ Only booleans instructions are supported for the moment.
 
 HOMER base seems to be OK, all instructions are executed in the ALU :smiley:
 
-![base](./img/homer_base.png)
-
 ![test](./img/testbench_base.png)
+
+## 19/06/2020
+
+Adding an FSM:
+
+![base](./img/homer_base_fsm.png)
