@@ -38,20 +38,16 @@ Here is the basic instruction format :
 | 1110   | -               |                           |
 | 1111   | -               |                           |
 
-## 16/06/2020
+## 24/06/2020
 
-Only booleans instructions are supported for the moment.
+![sche](./img/homer_schematic.png)
 
-## 18/06/2020
+![simu](./img/homer_screen.png)
 
-HOMER base seems to be OK, all instructions are executed in the ALU :smiley:
+**First  (buggy) version of Homer !**
 
-![test](./img/testbench_base.png)
-
-## 19/06/2020
-
-- Adding an FSM.
-- hecking the program counter behavior.
-
-
+- In the simulation, the first instruction being decoded is the 4th stored in the RAM (`LOAD 1,MSB(R7)`)
+  - Takes 4 cycles for being decoded/executed.
+  - At least, the instruction decoder and the ALU work as expected!
+- Next: need to find where the 1st the first instruction is gone...
 
