@@ -40,20 +40,10 @@ Here is the basic instruction format :
 
 **First  (buggy) version of Homer !**
 
-<<<<<<< HEAD
 ![img](./img/homer_screen1.png)
 - The 1st instruction is decoded/executed in 4 cycles.
 - Next instruction to be executed is the 5th one:
   - Due to the FSM, the instruction decoder is enabled every 4 cycles.
   - While other instructions are being read from the code memory, the current instruction is processed by Homer.
   - The result of the current instruction is written in the register file 3 cycles after decoding (i.e. when `state=2` or `state=8`).
-=======
-- In the simulation, the first instruction being decoded is the 4th stored in the RAM (`LOAD 1,MSB(R7)`)
-  - Takes 4 cycles for being decoded/executed.
-  - At least, the instruction decoder and the ALU work as expected!
-- The FSM starts at `state=1` which means the instruction decoder is enabled as soon as the simulation starts...
-  - As a consequence, instructions will be skipped until the next occurence of `start=1` (happenning 4 cycles later).
-  - If the FSM start at `state=0` (nothing enabled), it will let Homer a single cycle before enabling the instruction decoder. 
->>>>>>> master
-
 - In other words, Homer seems to handle instructions as expected. Just need to manage the incoming instructions stream.
