@@ -3,10 +3,6 @@ HOMER is an HOMEmade processoR with a custom 16-bit instruction set. The idea is
 
 This is mainly based on the tutorial available at: http://labs.domipheus.com/blog/category/projects/tpu/
 
-## HOMER features
-
-- [ ] 16 x 16-bit registers
-
 ## Instruction set and decoding
 
 Here is the basic instruction format :
