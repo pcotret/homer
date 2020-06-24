@@ -49,5 +49,7 @@ Here is the basic instruction format :
 - In the simulation, the first instruction being decoded is the 4th stored in the RAM (`LOAD 1,MSB(R7)`)
   - Takes 4 cycles for being decoded/executed.
   - At least, the instruction decoder and the ALU work as expected!
-- Next: need to find where the 1st the first instruction is gone...
+- The FSM starts at `state=1` which means the instruction decoder is enabled as soon as the simulation starts...
+  - As a consequence, instructions will be skipped until the next occurence of `start=1` (happenning 4 cycles later).
+  - If the FSM start at `state=0` (nothing enabled), it will let Homer a single cycle before enabling the instruction decoder. 
 
