@@ -14,7 +14,7 @@ generic(INSTR_SIZE : natural := 16; -- Instruction size
         REG_SIZE   : natural := 16  -- Size of a single register 
        );
 port(clk_in       : in std_logic;
-     pc_operation : in std_logic_vector(1 downto 0);
+     --pc_operation : in std_logic_vector(1 downto 0);
      pc_in        : in std_logic_vector(SIZE-1 downto 0)
     );
 end entity homer;
@@ -34,6 +34,8 @@ signal src1_reg_s  : std_logic_vector(REG_SIZE-1 downto 0);
 signal src2_reg_s  : std_logic_vector(REG_SIZE-1 downto 0);
 signal dst_reg_s   : std_logic_vector(REG_SIZE-1 downto 0);
 signal state_s     : std_logic_vector(3 downto 0);
+signal state_xor_s : std_logic;
+signal pcop_s      : std_logic_vector(1 downto 0);
 
 -- Components declaration
 component alu is
@@ -122,10 +124,12 @@ port map(clk         => clk_in,
          branch_out  => open,
          dst_reg_out => dst_reg_s
         );
+        pcop_s <= PC_INC when state_s(3) = '1' else
+                  PC_NOP;
 uut_pc:program_counter
 generic map(SIZE => SIZE)
 port map(clk_in       => clk_in,
-         pc_operation => pc_operation,
+         pc_operation => pcop_s,
          pc_in        => pc_in,
          pc_value_out => pc_value_s 
         );
@@ -154,12 +158,13 @@ port map(clk      => clk_in,
          wr_en    => wr_en_s,
          opcode   => opcode_s
         );
+        state_xor_s<=state_s(1) or state_s(3);
 uut_reg:reg_file
 generic map(REG_WIDTH => REG_SIZE,
             SIZE      => REG_NB
            )
 port map(clk          => clk_in,
-         en           => state_s(3) or state_s(1),
+         en           => state_xor_s,
          wr_en        => wr_en_s,
          src1_sel_in  => reg_src1_s,
          src1_reg_out => src1_reg_s,

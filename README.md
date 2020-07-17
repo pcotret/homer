@@ -47,3 +47,12 @@ Here is the basic instruction format :
   - While other instructions are being read from the code memory, the current instruction is processed by Homer.
   - The result of the current instruction is written in the register file 3 cycles after decoding (i.e. when `state=2` or `state=8`).
 - In other words, Homer seems to handle instructions as expected. Just need to manage the incoming instructions stream.
+
+**Second (less buggy) version of Homer**
+
+![img2](./img/homer_screen2.png)
+
+- The 1st instruction is decoded/executed in 4 cycles. It works as expected.
+- 2nd instruction is the 2nd one in the code memory, same for the 3rd, the 4th... => this part now works as well!
+  - I completely forgot to disable the program counter until the current instruction is executed...
+- 2nd instruction (also a `load`) takes more cycles to be executed. Furthermore, there are 2 cycles where `reg3` (the destination register) is written with the value of the previous instruction (`fe00` while `ed00`, the correct value, is written in the following clock cycle).
