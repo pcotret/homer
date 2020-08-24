@@ -124,7 +124,7 @@ port map(clk         => clk_in,
          branch_out  => open,
          dst_reg_out => dst_reg_s
         );
-        pcop_s <= PC_INC when state_s(3) = '1' else
+        pcop_s <= PC_INC when state_s(2) = '1' else
                   PC_NOP;
 uut_pc:program_counter
 generic map(SIZE => SIZE)
