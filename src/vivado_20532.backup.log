@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Aug 24 13:19:22 2020
+# Process ID: 20532
+# Current directory: /home/pascal/Documents/ensta/work/homer/src
+# Command line: vivado
+# Log file: /home/pascal/Documents/ensta/work/homer/src/vivado.log
+# Journal file: /home/pascal/Documents/ensta/work/homer/src/vivado.jou
+#-----------------------------------------------------------
+start_gui
+create_project project_1 /home/pascal/Documents/ensta/work/homer/src/project_1 -part xc7a100tcsg324-1
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2018.2/data/ip'.
+set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
+add_files -norecurse {/home/pascal/Documents/ensta/work/homer/src/reg_file.vhd /home/pascal/Documents/ensta/work/homer/src/program_counter.vhd /home/pascal/Documents/ensta/work/homer/src/alu.vhd /home/pascal/Documents/ensta/work/homer/src/homer_constants.vhd /home/pascal/Documents/ensta/work/homer/src/instruction_decoder.vhd /home/pascal/Documents/ensta/work/homer/src/ram_and_pc.vhd /home/pascal/Documents/ensta/work/homer/src/ram_memory_filled.vhd /home/pascal/Documents/ensta/work/homer/src/homer.vhd /home/pascal/Documents/ensta/work/homer/src/homer_pack.vhd /home/pascal/Documents/ensta/work/homer/src/homer_fsm.vhd}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 4
+[Mon Aug 24 13:22:21 2020] Launched synth_1...
+Run output will be captured here: /home/pascal/Documents/ensta/work/homer/src/project_1/project_1.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 4
+[Mon Aug 24 13:23:21 2020] Launched impl_1...
+Run output will be captured here: /home/pascal/Documents/ensta/work/homer/src/project_1/project_1.runs/impl_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Aug 24 13:24:33 2020...
