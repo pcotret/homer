@@ -24,7 +24,7 @@ This is mainly based on the tutorial available at: http://labs.domipheus.com/blo
 - The 1st instruction is decoded/executed in 4 cycles. It works as expected.
 - 2nd instruction is the 2nd one in the code memory, same for the 3rd, the 4th... => this part now works as well!
   - I completely forgot to disable the program counter until the current instruction is executed...
-- 2nd instruction (also a `load`) takes more cycles to be executed. Furthermore, there are 2 cycles where `reg3` (the destination register) is written with the value of the previous instruction (`fe00` while `ed00`, the correct value, is written in the following clock cycle).
+- Issue #1 on the second instruction
 
 ## Todo list
 
