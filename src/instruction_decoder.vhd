@@ -26,7 +26,7 @@ end entity instruction_decoder;
 -- Architecture
 architecture bhv of instruction_decoder is
 begin
-    process(clk)
+    process(clk,en)
     begin
         if rising_edge(clk) and en='1' then
             reg_src1 <= instr_in(7 downto 4);
