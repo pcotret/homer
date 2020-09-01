@@ -26,7 +26,7 @@ architecture bhv of reg_file is
 type register_file is array (0 to 2**SIZE-1) of std_logic_vector(REG_WIDTH-1 downto 0);
 signal reg_bank: register_file := (others => x"0000");
 begin
-    process(clk)
+    process(clk,en)
     begin
         if rising_edge(clk) and en='1' then
             src1_reg_out <= reg_bank(to_integer(unsigned(src1_sel_in)));
