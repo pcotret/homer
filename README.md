@@ -3,6 +3,12 @@ HOMER is an HOMEmade processoR with a custom 16-bit instruction set. The idea is
 
 This is mainly based on the tutorial available at: http://labs.domipheus.com/blog/category/projects/tpu/
 
+> **Todo list**
+> - [x] Writing a documentation for the ISA.
+> - [x] Debugging the behavior of the 2nd instruction: it should not take so long.
+> - [ ] Testing all instructions already implemented in the ALU.
+> - [ ] Make it synthesizable.
+
 ![sche](./img/homer_schematic.png)
 
 ## First  (buggy) version of Homer !
@@ -32,12 +38,7 @@ Issue [#1](https://github.com/pcotret/homer/issues/1) on the second instruction 
 
 Now, I need to verify the behavior of all instructions.
 
-## Todo list
-
-- [x] Writing a documentation for the ISA.
-- [x] Debugging the behavior of the 2nd instruction: it should not take so long.
-- [ ] Testing all instructions already implemented in the ALU:
-
+# Instructions
 | Instruction             | Simulation OK ?    |
 | ----------------------- | ------------------ |
 | ADD                     |                    |
