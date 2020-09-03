@@ -10,7 +10,6 @@ entity program_counter is
     generic(SIZE : natural := 16);
     port(clk_in       : in  std_logic;
          pc_operation : in  std_logic_vector(1 downto 0);
-         pc_in        : in  std_logic_vector(SIZE-1 downto 0);
          pc_value_out : out std_logic_vector(SIZE-1 downto 0)
         );
 end entity program_counter;
@@ -26,8 +25,6 @@ begin
             when PC_NOP => 
             when PC_INC =>
                 pc_value_s <= std_logic_vector(unsigned(pc_value_s) + 1);
-            when PC_ASSIGN =>
-                pc_value_s <= pc_in;
             when PC_RESET =>
                 pc_value_s <= X"0000";
             when others =>

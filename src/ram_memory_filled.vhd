@@ -8,7 +8,7 @@ use work.homer_pack.all;
 
 -- Entity
 entity ram_memory_filled is
-    generic(MEM_SIZE   : natural := 16;
+    generic(MEM_SIZE   : natural := 3;
             INSTR_SIZE : natural := 16);
     port(clk      : in  std_logic;
          wr_en    : in  std_logic;

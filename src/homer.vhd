@@ -13,9 +13,9 @@ generic(INSTR_SIZE : natural := 16; -- Instruction size
         REG_NB     : natural := 4;  -- log2 number of registers. Dependency with adress width
         REG_SIZE   : natural := 16  -- Size of a single register 
        );
-port(clk_in       : in std_logic;
-     --pc_operation : in std_logic_vector(1 downto 0);
-     pc_in        : in std_logic_vector(SIZE-1 downto 0)
+port(clk_in         : in  std_logic;
+     instruction_in : in  std_logic_vector(INSTR_SIZE-1 downto 0);
+     addr_out       : out std_logic_vector(SIZE-1 downto 0)
     );
 end entity homer;
 
@@ -46,11 +46,6 @@ component alu is
          opcode_in    : in  std_logic_vector(3 downto 0);
          src1_reg_in  : in  std_logic_vector(REG_WIDTH-1 downto 0);
          src2_reg_in  : in  std_logic_vector(REG_WIDTH-1 downto 0);
-         imm_in       : in  std_logic_vector(REG_WIDTH-1 downto 0);
-         wr_en_in     : in  std_logic;
-         pc_value_in  : in  std_logic_vector(REG_WIDTH-1 downto 0);
-         wr_reg_out   : out std_logic;
-         branch_out   : out std_logic;
          dst_reg_out  : out std_logic_vector(REG_WIDTH-1 downto 0)
         );
 end component alu;
@@ -79,20 +74,9 @@ component program_counter is
     generic(SIZE : natural := 16);
     port(clk_in       : in  std_logic;
          pc_operation : in  std_logic_vector(1 downto 0);
-         pc_in        : in  std_logic_vector(SIZE-1 downto 0);
          pc_value_out : out std_logic_vector(SIZE-1 downto 0)
         );
 end component program_counter;
-component ram_memory_filled is
-    generic(MEM_SIZE   : natural := 16;
-            INSTR_SIZE : natural := 16);
-    port(clk      : in  std_logic;
-         wr_en    : in  std_logic;
-         addr_in  : in  std_logic_vector(MEM_SIZE-1 downto 0);
-         data_in  : in  std_logic_vector(INSTR_SIZE-1 downto 0);
-         data_out : out std_logic_vector(INSTR_SIZE-1 downto 0)
-        );
-end component ram_memory_filled;
 component reg_file is
     generic(REG_WIDTH : natural := 16;
             SIZE      : natural := 4);
@@ -117,11 +101,6 @@ port map(clk         => clk_in,
          opcode_in   => opcode_s,
          src1_reg_in => src1_reg_s,
          src2_reg_in => src2_reg_s,
-         imm_in      => imm_s,
-         wr_en_in    => wr_en_s,
-         pc_value_in => pc_value_s,
-         wr_reg_out  => open,
-         branch_out  => open,
          dst_reg_out => dst_reg_s
         );
         pcop_s <= PC_INC when state_s(2) = '1' else
@@ -130,19 +109,9 @@ uut_pc:program_counter
 generic map(SIZE => SIZE)
 port map(clk_in       => clk_in,
          pc_operation => pcop_s,
-         pc_in        => pc_in,
          pc_value_out => pc_value_s 
         );
-uut_ram:ram_memory_filled
-generic map(MEM_SIZE   => SIZE,
-            INSTR_SIZE => INSTR_SIZE
-           )
-port map(clk      => clk_in,
-         wr_en    => '0',             -- Acting as a ROM
-         addr_in  => pc_value_s,
-         data_in  => (others => '0'), -- No need to write data in a ROM!
-         data_out => read_data_s
-        );
+        addr_out <= pc_value_s;
 uut_inst:instruction_decoder
 generic map(INSTR_SIZE => INSTR_SIZE,
             REG_NB     => REG_NB,
@@ -150,7 +119,7 @@ generic map(INSTR_SIZE => INSTR_SIZE,
            )
 port map(clk      => clk_in,
          en       => state_s(0),
-         instr_in => read_data_s,
+         instr_in => instruction_in,
          reg_src1 => reg_src1_s,
          reg_src2 => reg_src2_s,
          reg_dst  => reg_dst_s,

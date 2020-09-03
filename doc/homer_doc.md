@@ -12,18 +12,18 @@
 
 | Opcode | Instruction             | Implemented and validated |
 | ------ | ----------------------- | ------------------------- |
-| 0000   | ADD                     | Done                      |
+| 0000   | ADD                     |                           |
 | 0001   | SUB                     |                           |
-| 0010   | OR                      | Done                      |
-| 0011   | XOR                     | Done                      |
-| 0100   | AND                     | Done                      |
-| 0101   | NOT                     | Done                      |
+| 0010   | OR                      | :ballot_box_with_check:   |
+| 0011   | XOR                     |                           |
+| 0100   | AND                     |                           |
+| 0101   | NOT                     |                           |
 | 0110   | Read                    |                           |
 | 0111   | Write                   |                           |
-| 1000   | Load                    | Done                      |
-| 1001   | Compare                 | Done                      |
-| 1010   | Shift L                 | Done                      |
-| 1011   | Shift R                 | Done                      |
+| 1000   | Load                    |                           |
+| 1001   | Compare                 |                           |
+| 1010   | Shift L                 |                           |
+| 1011   | Shift R                 |                           |
 | 1100   | Jump                    |                           |
 | 1101   | Jump conditonal         |                           |
 | 1110   | Reserved for future use |                           |

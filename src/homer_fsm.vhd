@@ -12,7 +12,7 @@ end entity homer_fsm;
 
 -- Architecture
 architecture bhv of homer_fsm is
-signal state_s: std_logic_vector(3 downto 0) := "0000";
+signal state_s: std_logic_vector(3 downto 0);
 begin
 process(clk_in)
 begin
