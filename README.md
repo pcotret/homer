@@ -21,7 +21,7 @@ However, this CPU cannot be synthesized... (see issue [#2](https://github.com/pc
 
 In order to fix some issues, the ALU has been made as simple as I can. I will add instructions to the CPU later on.
 
-![cpu](./doc/top_diagram.png)
+![cpu](./img/top_diagram.png)
 
 - Program memory: 16 bytes (i.e.: 8 instructions)
 - Memory mapping:
