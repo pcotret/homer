@@ -112,6 +112,16 @@ begin
      src1_reg_in <= x"0005";
      src2_reg_in <= x"0010";
      wait_cycles(2);
+     -- Add instruction
+     opcode_in <= OPC_ADD;
+     src1_reg_in <= x"0002";
+     src2_reg_in <= x"0005";
+     wait_cycles(2);
+     -- Sub instruction
+     opcode_in <= OPC_SUB;
+     src1_reg_in <= x"000A";
+     src2_reg_in <= x"0005";
+     wait_cycles(2);
      report "end of simulation";
      running <=false;
      wait;
