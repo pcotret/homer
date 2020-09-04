@@ -21,8 +21,6 @@ end entity alu;
 -- Architecture
 architecture bhv of alu is
 signal result_s : std_logic_vector(REG_WIDTH-1 downto 0) := (others => '0');
--- Intermediate branch signal
-signal branch_s : std_logic := '0';
 
 -- Register file
 begin
