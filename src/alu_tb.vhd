@@ -87,6 +87,31 @@ begin
      -- NOT instruction (on src1_reg_in)
      opcode_in <= OPC_NOT;
      wait_cycles(2);
+     -- COMPARE instruction, leading to a KO
+     opcode_in <= OPC_COMPARE;
+     src1_reg_in <= x"CAFE";
+     src2_reg_in <= x"CAFF";
+     wait_cycles(2);
+     -- COMPARE instruction, leading to a OK
+     opcode_in <= OPC_COMPARE;
+     src1_reg_in <= x"CAFE";
+     src2_reg_in <= x"CAFE";
+     wait_cycles(2);
+     -- Shift left by 2 bits
+     opcode_in <= OPC_SL;
+     src1_reg_in <= x"0002";
+     src2_reg_in <= x"0001";
+     wait_cycles(2);
+     -- Shift left by 5 bits
+     opcode_in <= OPC_SL;
+     src1_reg_in <= x"0005";
+     src2_reg_in <= x"0001";
+     wait_cycles(2);
+     -- Shift right by 5 bits
+     opcode_in <= OPC_SR;
+     src1_reg_in <= x"0005";
+     src2_reg_in <= x"0010";
+     wait_cycles(2);
      report "end of simulation";
      running <=false;
      wait;

@@ -21,9 +21,9 @@
 | 0110   | Read                    |                           |
 | 0111   | Write                   |                           |
 | 1000   | Load                    |                           |
-| 1001   | Compare                 |                           |
-| 1010   | Shift L                 |                           |
-| 1011   | Shift R                 |                           |
+| 1001   | Compare                 | :ballot_box_with_check:   |
+| 1010   | Shift L                 | :ballot_box_with_check:   |
+| 1011   | Shift R                 | :ballot_box_with_check:   |
 | 1100   | Jump                    |                           |
 | 1101   | Jump conditonal         |                           |
 | 1110   | Reserved for future use |                           |
