@@ -12,8 +12,8 @@
 
 | Opcode | Instruction             | Implemented and validated |
 | ------ | ----------------------- | ------------------------- |
-| 0000   | ADD                     |                           |
-| 0001   | SUB                     |                           |
+| 0000   | ADD                     | :ballot_box_with_check:   |
+| 0001   | SUB                     | :ballot_box_with_check:   |
 | 0010   | OR                      | :ballot_box_with_check:   |
 | 0011   | XOR                     | :ballot_box_with_check:   |
 | 0100   | AND                     | :ballot_box_with_check:   |
