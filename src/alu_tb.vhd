@@ -30,11 +30,6 @@ architecture bhv of alu_tb is
   signal opcode_in   : std_logic_vector(3 downto 0);
   signal src1_reg_in : std_logic_vector(REG_WIDTH - 1 downto 0);
   signal src2_reg_in : std_logic_vector(REG_WIDTH - 1 downto 0);
-  signal imm_in      : std_logic_vector(REG_WIDTH - 1 downto 0);
-  signal wr_en_in    : std_logic;
-  signal pc_value_in : std_logic_vector(REG_WIDTH-1 downto 0);
-  signal wr_reg_out  : std_logic;
-  signal branch_out  : std_logic;
   signal dst_reg_out : std_logic_vector(REG_WIDTH - 1 downto 0);
 
 begin
@@ -56,11 +51,6 @@ begin
           opcode_in   => opcode_in  ,
           src1_reg_in => src1_reg_in,
           src2_reg_in => src2_reg_in,
-          imm_in      => imm_in     ,
-          wr_en_in    => wr_en_in   ,
-          pc_value_in => pc_value_in,
-          wr_reg_out  => wr_reg_out ,
-          branch_out  => branch_out ,
           dst_reg_out => dst_reg_out
         );
 
@@ -76,29 +66,11 @@ begin
      opcode_in   <= (others => '0');
      src1_reg_in <= (others => '0');
      src2_reg_in <= (others => '0');
-     imm_in      <= (others => '0');
      wait_cycles(2);
-     -- Enable with a non-supported instruction
-     en <= '1';
+     -- Set default values for source registersnd enable the ALU
      src1_reg_in <= x"ABCD";
-     src2_reg_in <= x"CAFE";
-     imm_in      <= x"1234";
-     wait_cycles(2);
-     -- ADD instruction
-     opcode_in <= OPC_ADD;
-     src1_reg_in <= x"0008";
-     src2_reg_in <= x"0009";
-     wait_cycles(2);
-     -- ADD instruction with an overflow
-     opcode_in <= OPC_ADD;
-     src1_reg_in <= x"FFFE";
      src2_reg_in <= x"0003";
-     wait_cycles(2);
-     -- SUB instruction
-     opcode_in <= OPC_SUB;
-     src1_reg_in <= x"0009";
-     src2_reg_in <= x"0003";
-     wait_cycles(2);
+     en          <= '1';
      -- OR instruction
      opcode_in <= OPC_OR;
      wait_cycles(2);
@@ -112,63 +84,8 @@ begin
      opcode_in   <= OPC_AND;
      src2_reg_in <= x"ABCD";
      wait_cycles(2);
-     -- NOT instruction
+     -- NOT instruction (on src1_reg_in)
      opcode_in <= OPC_NOT;
-     wait_cycles(2);
-     -- Read instruction
-     opcode_in <= OPC_READ;
-     src1_reg_in <= x"AACC";
-     imm_in <= x"4363";
-     wait_cycles(2);
-     -- Write instruction
-     opcode_in <= OPC_WRITE;
-     src1_reg_in <= x"AACC";
-     imm_in <= x"4363";
-     wait_cycles(2);
-     -- LOAD instruction
-     opcode_in <= OPC_LOAD;
-     imm_in <= x"BEEF";
-     wait_cycles(2);
-     -- CMP instruction w/ two equal registers
-     opcode_in <= OPC_COMPARE;
-     src1_reg_in <= x"1234";
-     src2_reg_in <= x"1234";
-     wait_cycles(2);
-     -- CMP instruction w/ two different registers
-     opcode_in <= OPC_COMPARE;
-     src1_reg_in <= x"1234";
-     src2_reg_in <= x"ABCD";
-     wait_cycles(2);
-     -- Shift left instruction
-     opcode_in <= OPC_SL;
-     src1_reg_in <= x"0002";
-     src2_reg_in <= x"ABCD";
-     wait_cycles(2);
-     -- Shift left instruction
-     opcode_in <= OPC_SL;
-     src1_reg_in <= x"0004";
-     src2_reg_in <= x"ABCD";
-     wait_cycles(2);
-     -- Shift right instruction
-     opcode_in <= OPC_SR;
-     src1_reg_in <= x"0002";
-     src2_reg_in <= x"ABCD";
-     wait_cycles(2);
-     -- Jump instruction
-     opcode_in <= OPC_JUMP;
-     src2_reg_in <= x"B4B3";
-     wait_cycles(2);
-     -- Conditional jump instruction
-     opcode_in <= OPC_JUMPCOND;
-     src1_reg_in <= x"FFFF";
-     src2_reg_in <= x"A12F";
-     imm_in <= (others => '0');
-     wait_cycles(2);
-     -- Conditional jump instruction, no branch
-     opcode_in <= OPC_JUMPCOND;
-     src1_reg_in <= x"FFFF";
-     src2_reg_in <= x"A12F";
-     imm_in <= (others => '1');
      wait_cycles(2);
      report "end of simulation";
      running <=false;

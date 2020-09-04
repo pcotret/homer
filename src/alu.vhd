@@ -31,6 +31,15 @@ begin
         if rising_edge(clk) and en='1' then
             case(opcode_in) is
 
+                when OPC_XOR => -- Boolean XOR
+                result_s <= src1_reg_in xor src2_reg_in;
+                
+                when OPC_AND => -- Boolean AND
+                result_s <= src1_reg_in and src2_reg_in;
+
+                when OPC_NOT => -- Boolean NOT
+                result_s <= not(src1_reg_in);
+
                 when OPC_OR => -- Boolean OR
                 result_s <= src1_reg_in or src2_reg_in;
                                
@@ -40,5 +49,5 @@ begin
         end if;
     end process;
     -- Exporting the computed result
-    dst_reg_out <= result_s(REG_WIDTH-1 downto 0);
+    dst_reg_out <= result_s;
 end architecture bhv;
