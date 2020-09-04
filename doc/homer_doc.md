@@ -15,9 +15,9 @@
 | 0000   | ADD                     |                           |
 | 0001   | SUB                     |                           |
 | 0010   | OR                      | :ballot_box_with_check:   |
-| 0011   | XOR                     |                           |
-| 0100   | AND                     |                           |
-| 0101   | NOT                     |                           |
+| 0011   | XOR                     | :ballot_box_with_check:   |
+| 0100   | AND                     | :ballot_box_with_check:   |
+| 0101   | NOT                     | :ballot_box_with_check:   |
 | 0110   | Read                    |                           |
 | 0111   | Write                   |                           |
 | 1000   | Load                    |                           |
